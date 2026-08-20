@@ -22,7 +22,14 @@ export function Header() {
       <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-3">
         <Link to="/" className="flex items-center gap-3" onClick={() => setOpen(false)}>
           <img src={logoUrl} alt="VGM Group logo" className="h-11 w-11 object-contain" />
-          <span className="font-display text-lg tracking-[0.25em] text-gilded">VGM GROUP</span>
+          <span className="flex flex-col leading-none">
+            <span className="font-display text-xl font-bold tracking-normal text-gilded sm:text-2xl">
+              VGM
+            </span>
+            <span className="mt-0.5 font-display text-[0.6rem] font-semibold uppercase tracking-[0.42em] text-muted-foreground sm:text-[0.65rem]">
+              Group
+            </span>
+          </span>
         </Link>
 
         <nav className="hidden items-center gap-7 md:flex">
