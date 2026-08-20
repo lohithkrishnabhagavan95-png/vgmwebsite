@@ -60,21 +60,22 @@ function Home() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-5 pb-6">
-        <div className="card-lux overflow-hidden p-2">
-          <video
-            src={brandRevealUrl}
-            className="aspect-video w-full rounded-sm object-cover"
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="metadata"
-          />
+      <section className="mx-auto max-w-5xl px-5 pb-6">
+        {/* Gold hairline frame around the reveal: the gradient sits on the
+            outer element and the inset padding lets it read as a thin rule. */}
+        <div className="rounded-2xl bg-[linear-gradient(140deg,color-mix(in_oklab,var(--gold)_55%,transparent),transparent_38%,color-mix(in_oklab,var(--gold)_35%,transparent))] p-px shadow-[0_28px_60px_-32px_oklch(0.35_0.12_28/0.45)]">
+          <div className="overflow-hidden rounded-[calc(1rem-1px)] bg-card">
+            <video
+              src={brandRevealUrl}
+              className="aspect-video w-full object-cover"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+            />
+          </div>
         </div>
-        <p className="mt-3 text-center text-xs uppercase tracking-[0.25em] text-muted-foreground">
-          VGM Group brand reveal
-        </p>
       </section>
 
       <section className="border-y border-border/70 bg-surface/40">
