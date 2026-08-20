@@ -56,8 +56,7 @@ Currently expected:
 
 - `public/assets/vgm-logo-maroon.png` ✅
 - `public/assets/vgm-brand-reveal.mp4` ✅
-- `public/assets/chairman-kiran-vandana.jpg` ⚠️ **not yet added** — drop the
-  chairman's photo at this exact path (square crop works best).
+- `public/assets/chairman-kiran-vandana.jpg` ✅
 
 ## Deploying to a Linux server
 
