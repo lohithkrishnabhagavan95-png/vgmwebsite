@@ -41,7 +41,11 @@ const stats = [
 ];
 
 const capabilities = [
-  { icon: Home, t: "Residential", d: "Villas, apartments and independent homes built to spec." },
+  {
+    icon: Home,
+    t: "Residential",
+    d: "Government schools, hospitals, street lights, buildings and corporate parking lots.",
+  },
   {
     icon: Factory,
     t: "Commercial & Industrial",
