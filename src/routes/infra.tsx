@@ -65,45 +65,6 @@ const capabilities = [
   { icon: KeyRound, t: "Turnkey Handover", d: "One contract, one accountable team, keys in hand." },
 ];
 
-const projects = [
-  {
-    n: "01",
-    t: "Sringar Residency",
-    loc: "Kompally, Hyderabad",
-    units: "24 Units",
-    area: "48,000 sqft",
-    year: "2024",
-    img: heroImg,
-  },
-  {
-    n: "02",
-    t: "VGM Tech Park Shell",
-    loc: "Gachibowli",
-    units: "Office core",
-    area: "42,000 sqft",
-    year: "2023",
-    img: progressImg,
-  },
-  {
-    n: "03",
-    t: "Anand Warehouse",
-    loc: "Medchal",
-    units: "PEB shed",
-    area: "60,000 sqft",
-    year: "2022",
-    img: progressImg,
-  },
-  {
-    n: "04",
-    t: "Vasavi Triplex Villas",
-    loc: "Shamirpet",
-    units: "3 Villas",
-    area: "15,000 sqft",
-    year: "2025",
-    img: heroImg,
-  },
-];
-
 const journey = [
   ["2017", "Foundation", "VGM Hub Infra formed in Hyderabad with a small civil crew."],
   ["2020", "First landmark", "Delivered our first 20-unit premium residential block."],
@@ -157,7 +118,7 @@ function Infra() {
           </p>
           <div className="mt-10 flex flex-wrap gap-4">
             <a
-              href="#works"
+              href="#capabilities"
               className="inline-flex items-center gap-2 border border-primary px-6 py-3 text-xs uppercase tracking-[0.2em] text-primary transition-colors hover:bg-primary hover:text-primary-foreground"
             >
               Explore our work <ArrowUpRight className="size-4" />
@@ -208,7 +169,7 @@ function Infra() {
         />
       </section>
 
-      <section className="border-y border-border/70 bg-surface/40">
+      <section id="capabilities" className="border-y border-border/70 bg-surface/40">
         <div className="mx-auto max-w-6xl px-5 py-20">
           <h2 className="text-3xl md:text-4xl">Capabilities</h2>
           <div className="mt-10 grid gap-6 md:grid-cols-3">
@@ -220,56 +181,6 @@ function Infra() {
               </article>
             ))}
           </div>
-        </div>
-      </section>
-
-      <section id="works" className="mx-auto max-w-6xl px-5 py-20">
-        <div className="flex items-end justify-between gap-6">
-          <h2 className="text-3xl md:text-4xl">
-            Selected <span className="text-gilded">works</span>
-          </h2>
-          <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">2022 — 2025</p>
-        </div>
-        <div className="mt-10 grid gap-6 md:grid-cols-2">
-          {projects.map((p) => (
-            <article key={p.t} className="card-lux group overflow-hidden">
-              <div className="relative aspect-[4/3] overflow-hidden">
-                <img
-                  src={p.img}
-                  alt={`${p.t} by VGM Hub Infra`}
-                  loading="lazy"
-                  className="size-full object-cover opacity-80 transition-transform duration-500 group-hover:scale-105"
-                />
-                <span className="absolute left-4 top-4 font-display text-sm text-gilded">
-                  {p.n}
-                </span>
-              </div>
-              <div className="p-7">
-                <p className="text-xs uppercase tracking-[0.2em] text-primary">{p.loc}</p>
-                <h3 className="mt-3 text-xl">{p.t}</h3>
-                <dl className="mt-5 grid grid-cols-3 gap-4 border-t border-border/70 pt-5 text-sm">
-                  <div>
-                    <dt className="text-xs uppercase tracking-[0.15em] text-muted-foreground">
-                      Scope
-                    </dt>
-                    <dd className="mt-1">{p.units}</dd>
-                  </div>
-                  <div>
-                    <dt className="text-xs uppercase tracking-[0.15em] text-muted-foreground">
-                      Area
-                    </dt>
-                    <dd className="mt-1">{p.area}</dd>
-                  </div>
-                  <div>
-                    <dt className="text-xs uppercase tracking-[0.15em] text-muted-foreground">
-                      Year
-                    </dt>
-                    <dd className="mt-1">{p.year}</dd>
-                  </div>
-                </dl>
-              </div>
-            </article>
-          ))}
         </div>
       </section>
 

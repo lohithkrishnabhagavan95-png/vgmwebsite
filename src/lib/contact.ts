@@ -3,8 +3,8 @@
 export const whatsappNumber = "919701343366";
 export const phoneDisplay = "+91 97013 43366";
 export const phoneHref = "tel:+919701343366";
-export const email = "connect@vgmgroup.in";
-export const careersEmail = "connect@vgmgroup.in";
+export const email = "info@vgmgroup.in";
+export const careersEmail = "info@vgmgroup.in";
 export const location = "Visakhapatnam, India";
 
 const whatsappGreeting = "Hi VGM Group, I'd like to know more about your services.";
