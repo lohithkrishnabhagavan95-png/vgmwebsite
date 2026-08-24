@@ -154,10 +154,6 @@ function Infra() {
             thoughtful design. We keep our own supervisors on site, publish weekly progress and hand
             over on a single accountable contract.
           </p>
-          <p className="mt-4 text-muted-foreground">
-            Whether it is a family villa, a 40,000 sq ft office core or an industrial shed, the
-            standard of finish does not change.
-          </p>
         </div>
         <img
           src={progressImg}
