@@ -306,25 +306,6 @@ function Infra() {
           )}
         </div>
       </section>
-
-      <section className="border-t border-border/70 bg-surface/40">
-        <div className="mx-auto max-w-6xl px-5 py-20">
-          <p className="text-xs uppercase tracking-[0.35em] text-primary">
-            Services / Projects We Undertake
-          </p>
-          <ul className="mt-10 grid gap-x-12 md:grid-cols-2">
-            {services.map((s) => (
-              <li
-                key={s}
-                className="flex items-baseline gap-3 border-b border-border/60 py-3.5 text-sm text-foreground"
-              >
-                <span className="size-1.5 shrink-0 rounded-full bg-primary" />
-                {s}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
     </div>
   );
 }
