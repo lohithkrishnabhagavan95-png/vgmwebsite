@@ -63,26 +63,6 @@ function About() {
           ))}
         </div>
       </section>
-
-      <section className="border-t border-border/70 bg-surface/40">
-        <div className="mx-auto max-w-6xl px-5 py-16">
-          <h2 className="text-3xl">Milestones</h2>
-          <ul className="mt-10 grid gap-8 md:grid-cols-4">
-            {[
-              ["2017", "VGM IT practice founded"],
-              ["2020", "First enterprise cloud programme"],
-              ["2022", "VGM Hub Infra launched"],
-              ["2025", "Group crosses 120 projects"],
-            ].map(([y, d]) => (
-              <li key={y}>
-                <p className="font-display text-2xl text-gilded">{y}</p>
-                <div className="rule-gold my-3 w-16" />
-                <p className="text-sm text-muted-foreground">{d}</p>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
     </div>
   );
 }

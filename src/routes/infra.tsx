@@ -1,5 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { HardHat, Home, Factory, Ruler, Hammer, KeyRound, ArrowUpRight } from "lucide-react";
+import { useState } from "react";
+import { HardHat, Home, Factory, Ruler, Hammer, KeyRound, ArrowUpRight, Check } from "lucide-react";
+import { email } from "@/lib/contact";
 import heroImg from "@/assets/infra-hero.jpg";
 import progressImg from "@/assets/infra-progress.jpg";
 
@@ -49,6 +51,17 @@ const capabilities = [
   { icon: KeyRound, t: "Turnkey Handover", d: "One contract, one accountable team, keys in hand." },
 ];
 
+const sectors = [
+  "Government Infrastructure",
+  "Educational Institutions",
+  "Healthcare Facilities",
+  "Corporate & Industrial Parks",
+  "Roads & Highways",
+  "Parking Infrastructure",
+  "Street Lighting",
+  "Turnkey Projects",
+];
+
 const services = [
   "Government & Public Infrastructure Buildings",
   "Schools, Colleges & Educational Institutions",
@@ -65,18 +78,9 @@ const services = [
   "Turnkey Construction & Infrastructure Projects",
 ];
 
-const sectors = [
-  "Government Infrastructure",
-  "Educational Institutions",
-  "Healthcare Facilities",
-  "Corporate & Industrial Parks",
-  "Roads & Highways",
-  "Parking Infrastructure",
-  "Street Lighting",
-  "Turnkey Projects",
-];
-
 function Infra() {
+  const [submitted, setSubmitted] = useState(false);
+
   return (
     <div>
       <section className="relative overflow-hidden border-b border-border/70">
@@ -99,29 +103,13 @@ function Infra() {
             and private sector developments. From planning and design to execution and handover, we
             undertake projects built for quality, functionality and long-term value.
           </p>
-          <div className="mt-12 max-w-3xl">
-            <p className="text-xs uppercase tracking-[0.28em] text-primary">
-              Services / Projects We Undertake
-            </p>
-            <ul className="mt-6 grid gap-x-8 md:grid-cols-2">
-              {services.map((s) => (
-                <li
-                  key={s}
-                  className="flex items-baseline gap-3 border-b border-border/60 py-3 text-sm text-muted-foreground"
-                >
-                  <span className="size-1.5 shrink-0 rounded-full bg-primary" />
-                  {s}
-                </li>
-              ))}
-            </ul>
-          </div>
           <div className="mt-10 flex flex-wrap gap-4">
-            <Link
-              to="/about"
+            <a
+              href="#consultation"
               className="inline-flex items-center gap-2 border border-border px-6 py-3 text-xs uppercase tracking-[0.2em] text-foreground transition-colors hover:border-primary hover:text-primary"
             >
               Book a consultation
-            </Link>
+            </a>
           </div>
         </div>
       </section>
@@ -205,14 +193,166 @@ function Infra() {
               Share your requirement — we respond with a feasibility note and indicative BOQ.
             </p>
           </div>
-          <Link
-            to="/about"
+          <a
+            href="#consultation"
             className="inline-flex items-center gap-2 border border-primary px-6 py-3 text-xs uppercase tracking-[0.2em] text-primary transition-colors hover:bg-primary hover:text-primary-foreground"
           >
             Talk to us <ArrowUpRight className="size-4" />
-          </Link>
+          </a>
         </div>
       </section>
+
+      <section id="consultation" className="mx-auto max-w-2xl px-5 pb-20">
+        <div className="card-lux p-7 md:p-9">
+          <h2 className="text-2xl">Book a consultation</h2>
+          <p className="mt-2 text-sm text-muted-foreground">
+            Tell us what you are planning and we will come back with a feasibility note.
+          </p>
+
+          {submitted ? (
+            <div className="mt-8 flex flex-col items-center py-8 text-center">
+              <div className="flex size-12 items-center justify-center rounded-full border border-primary">
+                <Check className="size-5 text-primary" />
+              </div>
+              <h3 className="mt-5 text-lg">Almost there</h3>
+              <p className="mt-2 text-sm text-muted-foreground">
+                We have opened a prefilled email to {email} — hit send and our team responds within
+                two working days.
+              </p>
+              <button
+                onClick={() => setSubmitted(false)}
+                className="mt-6 text-xs uppercase tracking-[0.18em] text-primary"
+              >
+                Send another
+              </button>
+            </div>
+          ) : (
+            <form
+              className="mt-6 space-y-4"
+              onSubmit={(e) => {
+                e.preventDefault();
+                // No backend: hand the enquiry to the visitor's mail client,
+                // prefilled, so it actually reaches the inbox.
+                const data = new FormData(e.currentTarget);
+                const value = (k: string) => String(data.get(k) ?? "").trim() || "—";
+                const service = value("service");
+                const body = [
+                  `Service / Project: ${service}`,
+                  `Name: ${value("name")}`,
+                  `Email: ${value("email")}`,
+                  `Phone: ${value("phone")}`,
+                  `Site location: ${value("location")}`,
+                  "",
+                  "Requirement",
+                  value("message"),
+                ].join("\n");
+                window.location.href = `mailto:${email}?subject=${encodeURIComponent(
+                  `Consultation — ${service}`,
+                )}&body=${encodeURIComponent(body)}`;
+                setSubmitted(true);
+              }}
+            >
+              <ConsultField label="Full name" name="name" />
+              <ConsultField label="Email" name="email" type="email" />
+              <ConsultField label="Phone" name="phone" type="tel" />
+              <ConsultField label="Site location" name="location" placeholder="City / area" />
+              <div>
+                <label
+                  htmlFor="service"
+                  className="text-xs uppercase tracking-[0.15em] text-muted-foreground"
+                >
+                  Service / Project type
+                </label>
+                <select
+                  id="service"
+                  name="service"
+                  required
+                  defaultValue=""
+                  className="mt-2 w-full border border-input bg-background px-3 py-2.5 text-sm outline-none focus:border-primary"
+                >
+                  <option value="" disabled>
+                    Select a service
+                  </option>
+                  {services.map((s) => (
+                    <option key={s} value={s}>
+                      {s}
+                    </option>
+                  ))}
+                  <option value="General enquiry">General enquiry</option>
+                </select>
+              </div>
+              <div>
+                <label
+                  htmlFor="message"
+                  className="text-xs uppercase tracking-[0.15em] text-muted-foreground"
+                >
+                  Your requirement
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows={4}
+                  className="mt-2 w-full border border-input bg-background px-3 py-2.5 text-sm outline-none focus:border-primary"
+                  placeholder="Plot size, scope, timeline or anything else we should know"
+                />
+              </div>
+              <button
+                type="submit"
+                className="w-full border border-primary bg-primary px-6 py-3 text-xs uppercase tracking-[0.2em] text-primary-foreground transition-opacity hover:opacity-90"
+              >
+                Request consultation
+              </button>
+            </form>
+          )}
+        </div>
+      </section>
+
+      <section className="border-t border-border/70 bg-surface/40">
+        <div className="mx-auto max-w-6xl px-5 py-20">
+          <p className="text-xs uppercase tracking-[0.35em] text-primary">
+            Services / Projects We Undertake
+          </p>
+          <ul className="mt-10 grid gap-x-12 md:grid-cols-2">
+            {services.map((s) => (
+              <li
+                key={s}
+                className="flex items-baseline gap-3 border-b border-border/60 py-3.5 text-sm text-foreground"
+              >
+                <span className="size-1.5 shrink-0 rounded-full bg-primary" />
+                {s}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+function ConsultField({
+  label,
+  name,
+  type = "text",
+  placeholder,
+}: {
+  label: string;
+  name: string;
+  type?: string;
+  placeholder?: string;
+}) {
+  return (
+    <div>
+      <label htmlFor={name} className="text-xs uppercase tracking-[0.15em] text-muted-foreground">
+        {label}
+      </label>
+      <input
+        id={name}
+        name={name}
+        type={type}
+        placeholder={placeholder}
+        required
+        className="mt-2 w-full border border-input bg-background px-3 py-2.5 text-sm outline-none focus:border-primary"
+      />
     </div>
   );
 }
