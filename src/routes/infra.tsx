@@ -24,26 +24,10 @@ export const Route = createFileRoute("/infra")({
   component: Infra,
 });
 
-const ticker = [
-  "9+ Years of Craft",
-  "Premium Residences",
-  "Book a Site Visit",
-  "120+ Projects Delivered",
-  "Bespoke Constructions",
-  "Turnkey Contracts",
-];
-
-const stats = [
-  ["500+", "Happy families"],
-  ["9+", "Years active"],
-  ["5L+", "Sq ft built"],
-  ["120+", "Projects done"],
-];
-
 const capabilities = [
   {
     icon: Home,
-    t: "Residential",
+    t: "Civil Works",
     d: "Government schools, hospitals, street lights, buildings and corporate parking lots.",
   },
   {
@@ -65,34 +49,32 @@ const capabilities = [
   { icon: KeyRound, t: "Turnkey Handover", d: "One contract, one accountable team, keys in hand." },
 ];
 
-const journey = [
-  ["2017", "Foundation", "VGM Hub Infra formed in Hyderabad with a small civil crew."],
-  ["2020", "First landmark", "Delivered our first 20-unit premium residential block."],
-  ["2023", "Industrial scale", "Expanded into pre-engineered warehouses and office cores."],
-  ["2025", "Turnkey studio", "In-house design, approvals and interiors under one contract."],
+const services = [
+  "Government & Public Infrastructure Buildings",
+  "Schools, Colleges & Educational Institutions",
+  "Hospitals & Healthcare Facilities",
+  "Corporate Parks & Commercial Campuses",
+  "Office Buildings & Business Centres",
+  "Industrial & Manufacturing Facilities",
+  "Residential & Township Developments",
+  "Roads & Internal Infrastructure",
+  "Corporate & Public Parking Facilities",
+  "Street Lighting & Smart Lighting Systems",
+  "Drainage, Water Supply & Utility Networks",
+  "Landscaping & Urban Development Works",
+  "Turnkey Construction & Infrastructure Projects",
 ];
 
-function Ticker() {
-  return (
-    <div className="overflow-hidden border-y border-border/70 bg-surface/40 py-3">
-      <div className="marquee-track">
-        {[0, 1].map((dup) => (
-          <div key={dup} className="flex shrink-0 items-center">
-            {ticker.map((t) => (
-              <span
-                key={`${dup}-${t}`}
-                className="flex items-center gap-6 px-6 text-xs uppercase tracking-[0.28em] text-muted-foreground"
-              >
-                {t}
-                <span className="text-primary">•</span>
-              </span>
-            ))}
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
+const sectors = [
+  "Government Infrastructure",
+  "Educational Institutions",
+  "Healthcare Facilities",
+  "Corporate & Industrial Parks",
+  "Roads & Highways",
+  "Parking Infrastructure",
+  "Street Lighting",
+  "Turnkey Projects",
+];
 
 function Infra() {
   return (
@@ -113,16 +95,27 @@ function Infra() {
           </h1>
           <div className="rule-gold mt-6 w-48" />
           <p className="mt-6 max-w-2xl text-muted-foreground">
-            VGM Hub Infra builds landmark residences, commercial cores and industrial facilities on
-            client request — from concept and drawings through approvals, execution and handover.
+            VGM Hub Infra delivers integrated infrastructure and construction solutions for public
+            and private sector developments. From planning and design to execution and handover, we
+            undertake projects built for quality, functionality and long-term value.
           </p>
+          <div className="mt-12 max-w-3xl">
+            <p className="text-xs uppercase tracking-[0.28em] text-primary">
+              Services / Projects We Undertake
+            </p>
+            <ul className="mt-6 grid gap-x-8 md:grid-cols-2">
+              {services.map((s) => (
+                <li
+                  key={s}
+                  className="flex items-baseline gap-3 border-b border-border/60 py-3 text-sm text-muted-foreground"
+                >
+                  <span className="size-1.5 shrink-0 rounded-full bg-primary" />
+                  {s}
+                </li>
+              ))}
+            </ul>
+          </div>
           <div className="mt-10 flex flex-wrap gap-4">
-            <a
-              href="#capabilities"
-              className="inline-flex items-center gap-2 border border-primary px-6 py-3 text-xs uppercase tracking-[0.2em] text-primary transition-colors hover:bg-primary hover:text-primary-foreground"
-            >
-              Explore our work <ArrowUpRight className="size-4" />
-            </a>
             <Link
               to="/about"
               className="inline-flex items-center gap-2 border border-border px-6 py-3 text-xs uppercase tracking-[0.2em] text-foreground transition-colors hover:border-primary hover:text-primary"
@@ -130,20 +123,8 @@ function Infra() {
               Book a consultation
             </Link>
           </div>
-          <div className="mt-16 grid max-w-3xl grid-cols-2 gap-8 md:grid-cols-4">
-            {stats.map(([k, v]) => (
-              <div key={v}>
-                <p className="font-display text-4xl text-gilded">{k}</p>
-                <p className="mt-2 text-xs uppercase tracking-[0.18em] text-muted-foreground">
-                  {v}
-                </p>
-              </div>
-            ))}
-          </div>
         </div>
       </section>
-
-      <Ticker />
 
       <section className="mx-auto grid max-w-6xl gap-12 px-5 py-20 md:grid-cols-2 md:items-center">
         <div>
@@ -154,6 +135,23 @@ function Infra() {
             thoughtful design. We keep our own supervisors on site, publish weekly progress and hand
             over on a single accountable contract.
           </p>
+          <p className="mt-4 text-muted-foreground">
+            VGM Hub Infra delivers end-to-end construction and infrastructure solutions across
+            government buildings, educational institutions, healthcare facilities, corporate parks,
+            industrial developments, roads, parking infrastructure, street lighting and urban
+            development projects.
+          </p>
+          <ul className="mt-7 grid grid-cols-2 gap-x-6 gap-y-3 border-t border-border/70 pt-6">
+            {sectors.map((sector) => (
+              <li
+                key={sector}
+                className="flex items-baseline gap-2.5 text-[0.7rem] uppercase tracking-[0.12em] text-foreground"
+              >
+                <span className="size-1.5 shrink-0 rounded-full bg-primary" />
+                {sector}
+              </li>
+            ))}
+          </ul>
         </div>
         <img
           src={progressImg}
@@ -177,21 +175,6 @@ function Infra() {
               </article>
             ))}
           </div>
-        </div>
-      </section>
-
-      <section className="border-y border-border/70 bg-surface/40">
-        <div className="mx-auto max-w-6xl px-5 py-20">
-          <h2 className="text-3xl md:text-4xl">Our journey</h2>
-          <ol className="mt-10 grid gap-8 md:grid-cols-4">
-            {journey.map(([y, t, d]) => (
-              <li key={y} className="border-t border-primary/50 pt-5">
-                <p className="font-display text-2xl text-gilded">{y}</p>
-                <h3 className="mt-3 text-lg">{t}</h3>
-                <p className="mt-2 text-sm text-muted-foreground">{d}</p>
-              </li>
-            ))}
-          </ol>
         </div>
       </section>
 

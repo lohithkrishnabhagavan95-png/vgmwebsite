@@ -21,13 +21,6 @@ export const Route = createFileRoute("/")({
   component: Home,
 });
 
-const stats = [
-  { k: "2", v: "Companies" },
-  { k: "120+", v: "Projects delivered" },
-  { k: "80+", v: "Team members" },
-  { k: "9", v: "Years of craft" },
-];
-
 function Home() {
   return (
     <div>
@@ -75,19 +68,6 @@ function Home() {
               preload="metadata"
             />
           </div>
-        </div>
-      </section>
-
-      <section className="border-y border-border/70 bg-surface/40">
-        <div className="mx-auto grid max-w-6xl grid-cols-2 gap-8 px-5 py-12 md:grid-cols-4">
-          {stats.map((s) => (
-            <div key={s.v} className="text-center">
-              <p className="font-display text-3xl text-gilded">{s.k}</p>
-              <p className="mt-2 text-xs uppercase tracking-[0.18em] text-muted-foreground">
-                {s.v}
-              </p>
-            </div>
-          ))}
         </div>
       </section>
 
