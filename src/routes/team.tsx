@@ -41,14 +41,7 @@ function Team() {
       <section className="mx-auto max-w-6xl px-5 py-20">
         <div className="mx-auto grid max-w-3xl gap-6">
           {leaders.map((l) => (
-            <article
-              key={l.n}
-              className="card-lux flex flex-col items-center gap-8 p-8 text-center sm:flex-row sm:items-center sm:text-left"
-            >
-              <div
-                aria-hidden
-                className="size-40 shrink-0 rounded-full border border-primary/25 bg-white"
-              />
+            <article key={l.n} className="card-lux p-8">
               <div>
                 <h3 className="font-display text-2xl text-gilded">{l.n}</h3>
                 <p className="mt-2 text-xs uppercase tracking-[0.2em] text-primary">{l.r}</p>
